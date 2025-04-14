@@ -23,12 +23,6 @@ public class EmployeeController
     {
         System.out.println("Employee Controller Init");
     }
-    @PostConstruct
-    public void init()
-    {
-        System.out.println("Employee Controller hash "+this.hashCode()+
-                " User Object Hash "+user.hashCode());
-    }
 
     @GetMapping("/fetchUser")
     public ResponseEntity<String> getUserDetails()
@@ -36,6 +30,15 @@ public class EmployeeController
         System.out.println("Fetech user api");
         return ResponseEntity.status(HttpStatus.OK).body("ok");
     }
+
+    @PostConstruct
+    public void init()
+    {
+        System.out.println("Employee Controller hash "+this.hashCode()+
+                " User Object Hash "+user.hashCode());
+    }
+
+
 
     @GetMapping("/logout")
     public ResponseEntity<String> logout(HttpServletRequest request)
