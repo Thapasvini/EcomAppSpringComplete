@@ -2,6 +2,7 @@ package com.org.completeSpringapplication.service;
 
 import com.org.completeSpringapplication.Entity.Book;
 import com.org.completeSpringapplication.Repository.BookRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -11,20 +12,25 @@ import java.util.Map;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class BookService
 {
-
+    //private static final Logger logger= LoggerFactory.getLogger(BookService.class);
     static boolean flag;
     static {
         flag = true;
     }
-
     @Autowired
     BookRepository bookRepository;
 
-    @Transactional(transactionManager="transactionManager")
+    @Transactional
     public Book addBook(Book book)
     {
+        log.warn("adding book in DB");
+        log.info("adding book in DB");
+        log.debug("adding book in DB");
+        log.trace("adding book in DB");
+        log.error("adding book in DB");
         return bookRepository.save(book);
     }
     public Optional<Book> getBookByName(String name)
